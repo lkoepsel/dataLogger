@@ -122,5 +122,6 @@ void alignRight(unsigned int number)
 
 void stop()
 {
+    display.print("END");
     while(1) {};
 }
