@@ -1,4 +1,6 @@
-// blink: turns an LED on for one second, then off for one second, repeatedly
+// test: turns an LED on for one second, then off for one second, repeatedly
+// why is it called test and not blink?
+// Use it to test your complete system to ensure everything is working!
 
 // setup function for initializing uC, req'd by Arduino
 void setup() {

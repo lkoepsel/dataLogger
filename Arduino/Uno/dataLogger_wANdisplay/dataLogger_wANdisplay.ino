@@ -12,7 +12,8 @@
 // Connect via QWIC connector to pin cable
 // SDA to pin SDA (above AREF)
 // SCLK to pin SCL (above SDA)
-// 5V to 5V and GND to GND
+// 5V to 5V 
+// GND to GND
 HT16K33 display;
 
 // global variables used in program
