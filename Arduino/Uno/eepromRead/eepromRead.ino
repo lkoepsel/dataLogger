@@ -8,10 +8,9 @@
 // global variables used in program
 int address = 0;            // beginning address at which to store data
 unsigned int data1 = 0;     // variable to store the first read data
-unsigned int data2 = 0;     // variable to store the second read data
+float data2 = 0;            // variable to store the second read data
 unsigned int wait_ms = 100; // amount of time in ms to wait
 unsigned int now;           // time stamp for data
-int memorySize = EEPROM.length()/(sizeof(data1) + sizeof(data2));
 
 // function to use to "stop" the uC by using an infinite loop
 void stop()
@@ -45,7 +44,7 @@ void loop() {
     Serial.println(data2);
 
     // check if the next address exceeds EEPROM capacity, if so, stop
-    if (address >= memorySize) 
+    if (address >= EEPROM.length()) 
     {
         Serial.println("Out of memory");
         stop();

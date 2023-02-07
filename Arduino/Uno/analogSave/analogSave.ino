@@ -7,12 +7,13 @@
 #include <EEPROM.h>
 
 // global variables used in program
-int address = 0;              // beginning address at which to store data
-int sensorPin = A0;           // set the input pin to be read
-unsigned int sensorValue = 0; // variable to store the sensor value
-unsigned int wait_ms = 1000;   // amount of time in ms to wait
-unsigned int now;             // time stamp for data
-int memorySize = EEPROM.length()/(sizeof(sensorValue) + sizeof(now));
+int address = 0;                    // beginning address at which to store data
+int ADCpin = A0;                    // set the input pin to be read
+unsigned int ADCvalue = 0;          // variable to store the ADC value
+unsigned int wait_ms = 1000;        // amount of time in ms to wait
+unsigned int now;                   // time stamp for data
+const float conversion = 5.0/1024;  // conversion constant for ADC to voltage
+float voltage = 0.0;                // variable to store the voltage conversion 
 
 // function to use to "stop" the uC by using an infinite loop
 void stop()
@@ -25,14 +26,14 @@ void stop()
 void setup() 
 {
     Serial.begin(115200);
-    Serial.println("Address\tTime\tData");
+    Serial.println("Address Time\tData");
 }
 
 // infinite loop for executing code without stopping, req'd by Arduino
 void loop() 
 {
-    // read the value from the sensor and get the elapsed time:
-    sensorValue = analogRead(sensorPin);
+    // read the value from the ADC and get the elapsed time:
+    ADCvalue = analogRead(ADCpin);
     now = millis();
 
     // print address, store time at address then get next available address
@@ -40,18 +41,19 @@ void loop()
     EEPROM.put(address, now);
     address += sizeof(now);
 
-    // store sensor value and set the next available address
-    EEPROM.put(address, sensorValue);
-    address += sizeof(sensorValue);
+    // calculate and store voltage then set the next available address
+    voltage = ADCvalue * conversion;
+    EEPROM.put(address, voltage);
+    address += sizeof(voltage);
 
-    // print time and sensor value
+    // print time and ADC value
     Serial.print("\t");
     Serial.print(now);
-    Serial.print("\t ");
-    Serial.println(sensorValue);
+    Serial.print(" \t");
+    Serial.println(voltage, 2);
 
     // check if the next address exceeds EEPROM capacity, if so, stop
-    if (address >= memorySize) 
+    if (address >= EEPROM.length()) 
     {
         Serial.println("Out of memory");
         stop();
