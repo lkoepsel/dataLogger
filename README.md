@@ -6,12 +6,13 @@ This repository contains a series of coding examples which support developing a 
 In this example, we'll be collecting data from an *analog* pin also known as an analog-to-digital converter (ADC) pin. The *ADC* will take an input voltage from 0-5V and will convert it to 0-1023, with 0 representing 0V and 1023 representing 5V. As the converter uses 10 bits or 2 to the 10th power (1024), this *ADC* is known as a *10-bit ADC*. To convert from *ADC* value to a voltage, we multiply the value by 5V/1024, this is known as the *conversion factor*.
 
 The examples are:
-1. **test** - demonstrate all aspects of the programming environment are working
-2. **analogRead** - demonstrate how to capture and display *ADC* values
-3. **analogSave** - demonstrate once the values have been captured, store in EEPROM memory to retain on power off
-4. **eepromRead** - re-display the values which have been stored in EEPROM
-5. **dataLogger** - simple data logger which resolves *analogSave* flaw
-6. **dataLogger_wANdisplay** - enhancement of *dataLogger*, adding an alphanumeric display to the Uno to display status and captured data
+a. **test** - demonstrate all aspects of the programming environment are working
+b. **analogRead** - demonstrate how to capture and display *ADC* values
+c. **analogSave** - demonstrate once the values have been captured, store in EEPROM memory to retain on power off
+d. **eepromRead** - re-display the values which have been stored in EEPROM
+e. **dataLogger** - simple data logger which resolves *analogSave* flaw
+f. **dataLogger_wANdisplay** - enhancement of *dataLogger*, adding an alphanumeric display to the Uno to display status and captured data
+**Note:** *The folders and filenames have the example letter prepended to them to make it easy to use them in order.*
 
 ## Installation (If new to GitHub)
 1. Click on down arrow in the green "*<> Code*" button in the upper right corner of this page.
