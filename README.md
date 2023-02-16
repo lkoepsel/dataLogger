@@ -1,5 +1,8 @@
 # dataLogger
 
+## NOTE: The [SparkFun Qwiic Alphanumeric Display](https://www.sparkfun.com/products/18566) uses 3.3V and not the 5V from the UNO! Please use a level-shifter or a Pi Pico (or equivalent) when using this specific display.
+
+
 ## Introduction
 This repository contains a series of coding examples which support developing a simple data logger. A data logger is a combination of hardware and software which gathers data, saves it and may also display the data during collection. 
 
